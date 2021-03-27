@@ -1,0 +1,12 @@
+.pagination {
+  &-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 10px;
+  }
+
+  button {
+    font-size: 8px;
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ListItem from "./ListItem";
+import Pagination from "./Pagination";
 import { DeviceService } from "../deviceService";
 
 const service = new DeviceService();
@@ -14,12 +14,11 @@ export default function DeviceList() {
   useEffect(() => service.getOtherDevices(setOtherDevices), []);
 
   const allDevices = [...basicLocks, ...specialLocks, ...otherDevices];
-  console.log(allDevices);
+
   return (
     <div className="device-list">
-      {allDevices.map((device, index) => (
-        <ListItem key={index} device={device} />
-      ))}
+      <h2>Your Devices</h2>
+      <Pagination devices={allDevices} />
     </div>
   );
 }
