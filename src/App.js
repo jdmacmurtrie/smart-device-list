@@ -1,11 +1,17 @@
+import { Provider } from "react-redux";
+import { store } from "./store";
+
 import DeviceList from "./components/DeviceList";
+
 import "./main.scss";
 
 function App() {
   return (
-    <div className="App">
-      <DeviceList />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <DeviceList />
+      </div>
+    </Provider>
   );
 }
 
