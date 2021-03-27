@@ -1,7 +1,7 @@
 import { Provider } from "react-redux";
 import { store } from "./store";
 
-import DeviceList from "./components/DeviceList";
+import DeviceList from "./containers/DeviceList";
 
 import "./main.scss";
 

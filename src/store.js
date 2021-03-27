@@ -1,8 +1,5 @@
 import { combineReducers, createStore } from "redux";
-
-import { basicLocksReducer } from "./modules/basicLocks";
-import { otherDevicesReducer } from "./modules/otherDevices";
-import { specialLocksReducer } from "./modules/specialLocks";
+import { basicLocksReducer, otherDevicesReducer, specialLocksReducer } from "./reducers";
 
 const rootReducer = combineReducers({
   basicLocks: basicLocksReducer,

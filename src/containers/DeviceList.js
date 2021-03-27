@@ -1,13 +1,11 @@
 import React, { useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
-import { setBasicLocks } from "../modules/basicLocks";
-import { setOtherDevices } from "../modules/otherDevices";
-import { setSpecialLocks } from "../modules/specialLocks";
+import { setBasicLocks, setOtherDevices, setSpecialLocks } from "../actions";
 
-import { basicLocksWithType } from "../modules/basicLocks/selectors";
+import { basicLocksWithType } from "../selectors";
 
-import Pagination from "./Pagination";
+import Pagination from "../components/Pagination";
 import { DeviceService } from "../deviceService";
 
 const service = new DeviceService();
