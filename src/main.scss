@@ -1,4 +1,6 @@
 @import "./sass/base";
-@import "./sass/components/deviceList";
-@import "./sass/components/listItem";
-@import "./sass/components/pagination";
+@import "./components/BasicLock";
+@import "./components/DeviceList";
+@import "./components/Pagination";
+@import "./reusable/ListItem";
+@import "./reusable/Checkbox";

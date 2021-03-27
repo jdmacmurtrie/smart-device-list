@@ -1,0 +1,15 @@
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+
+  input {
+    margin-left: 0;
+  }
+
+  &-label {
+    &--disabled {
+      color: darkgray;
+    }
+  }
+}

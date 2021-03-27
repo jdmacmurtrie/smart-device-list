@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ListItem from "./ListItem";
+import ListItem from "../reusable/ListItem";
 
 export default function Pagination({ devices }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,6 +12,7 @@ export default function Pagination({ devices }) {
   const getDisplayedDevices = () => {
     const lastDeviceIndex = currentPage * perPage;
     const firstDeviceIndex = lastDeviceIndex - perPage;
+
     return devices.slice(firstDeviceIndex, lastDeviceIndex);
   };
 
@@ -25,8 +26,8 @@ export default function Pagination({ devices }) {
 
   return (
     <div className="pagination">
-      {getDisplayedDevices().map((device, index) => (
-        <ListItem key={index} device={device} />
+      {getDisplayedDevices().map((device) => (
+        <ListItem key={device.id} device={device} />
       ))}
       <div className="pagination-button-wrapper">
         <button disabled={isFirstPage} onClick={previousPage}>

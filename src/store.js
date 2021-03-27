@@ -10,4 +10,6 @@ const rootReducer = combineReducers({
   specialLocks: specialLocksReducer,
 });
 
-export const store = createStore(rootReducer);
+const enableReduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__?.();
+
+export const store = createStore(rootReducer, enableReduxDevTools);
