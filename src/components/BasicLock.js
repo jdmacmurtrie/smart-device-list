@@ -5,6 +5,7 @@ export default function BasicLock({ capabilities, id, status }) {
   // id is unsued variable
   const [isLocked, setLocked] = useState(true);
 
+  // This is used in a couple places, maybe make a helper function?
   const capitalize = string => string.charAt(0).toUpperCase() + string.slice(1);
   const label = isLocked ? "Locked" : "Unlocked";
 
