@@ -1,6 +1,15 @@
 .device-list {
   background-color: white;
   padding: 10px 20px;
-  width: 200px;
-  height: 500px;
+  width: 275px;
+  height: 375px;
+
+  &-heading {
+    margin: 0;
+    text-align: center;
+  }
+
+  hr {
+    width: 50%;
+  }
 }

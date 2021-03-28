@@ -47,7 +47,8 @@ export default function DeviceList() {
 
   return (
     <div className="device-list">
-      <h2>Your Devices</h2>
+      <h2 className="device-list-heading">Your Devices</h2>
+      <hr />
       <Pagination devices={allDevices} />
     </div>
   );

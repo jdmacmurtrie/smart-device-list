@@ -1,27 +1,42 @@
 import React, { useState } from "react";
+
 import ToggleButton from "../reusable/ToggleButton";
 
-export default function BasicLock({ capabilities, id, status }) {
+import { capitalize } from "../utils";
+
+export default function BasicLock({ capabilities, name, status }) {
   const [isLocked, setLocked] = useState(true);
 
-  const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
-  const label = isLocked ? "Locked" : "Unlocked";
+  const statusText = isLocked ? "Locked" : "Unlocked";
+  const label = isLocked ? "Unlock" : "Lock";
+  const statusClass = `basic-lock-status--${status}`;
 
   const handleClick = () => {
     setLocked(!isLocked);
   };
 
   return (
-    <>
-      {capabilities.map((capability, index) => (
-        <div key={index}>{`${capitalize(capability)}: ${capitalize(status)}`}</div>
-      ))}
-      <ToggleButton
-        isToggledOn={!isLocked}
-        disabled={status === "unavailable"}
-        handleClick={handleClick}
-        label={label}
-      />
-    </>
+    <div className="basic-lock">
+      <div className="basic-lock-heading">
+        <strong>{name}</strong>
+        <div className="basic-lock-heading-status">{statusText}</div>
+      </div>
+      <div className="basic-lock-controls">
+        <div className="basic-lock-capabilities">
+          {capabilities.map((capability, index) => (
+            <div key={index}>
+              <span>{`${capitalize(capability)}: `}</span>
+              <span className={statusClass}>{capitalize(status)}</span>
+            </div>
+          ))}
+        </div>
+        <ToggleButton
+          isToggledOn={!isLocked}
+          disabled={status === "unavailable"}
+          handleClick={handleClick}
+          label={label}
+        />
+      </div>
+    </div>
   );
 }

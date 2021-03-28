@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ListItem from "../reusable/ListItem";
+import ListItem from "./ListItem";
 
 export default function Pagination({ devices }) {
   const [currentPage, setCurrentPage] = useState(1);

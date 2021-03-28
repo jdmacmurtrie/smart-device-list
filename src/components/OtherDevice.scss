@@ -1,18 +1,26 @@
 .other-device {
-  display: flex;
-  flex-direction: column;
-
-  &-level {
-    margin-top: 10px;
+  &-controls {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
+  }
+
+  &-level {
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
 
     &-text {
+      width: 12px;
       margin-left: 5px;
     }
   }
 
   &-slider {
     margin: 0;
+    width: 66%;
   }
 }

@@ -1,6 +1,8 @@
 @import "./sass/base";
+@import "./components/BasicLock";
+@import "./components/ListItem";
 @import "./components/OtherDevice";
 @import "./components/Pagination";
+@import "./components/SpecialLock";
 @import "./containers/DeviceList";
-@import "./reusable/ListItem";
 @import "./reusable/ToggleButton";

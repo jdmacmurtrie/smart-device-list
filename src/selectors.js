@@ -20,18 +20,26 @@ export const specialLocksList = (state) => {
       - a, b, c, and so on represent days of the week that the lock is accessible
       - there will be no fewer than 0 and no more than 7 letters in the sequence
     */
-    const daysAvailable = lock.schedule.split("* * ")[1].split(",");
-    const currentDay = new Date().getDay();
-    const isCurrentDayAccessible = daysAvailable.includes(currentDay);
+    let timesAccessible = lock.schedule
+      .split(" * *")[0]
+      .split(" ")
+      .map((time) => Number(time));
 
-    let timesAccessible = lock.schedule.split(" * *")[0].split(" ");
-    if (timesAccessible[1] === "0") {
-      // translate midnight to 24
+    if (timesAccessible[1] === 0) {
+      // translate second midnight to 24
       timesAccessible = [timesAccessible[0], 24];
     }
+
     const currentHour = new Date().getHours();
     const isCurrentHourAccessible =
       timesAccessible[0] <= currentHour && currentHour < timesAccessible[1];
+
+    const daysAvailable = lock.schedule
+      .split("* * ")[1]
+      .split(",")
+      .map((day) => Number(day));
+    const currentDay = new Date().getDay();
+    const isCurrentDayAccessible = daysAvailable.includes(currentDay);
 
     const lockIsAccessible = isCurrentHourAccessible && isCurrentDayAccessible;
 
@@ -42,14 +50,14 @@ export const specialLocksList = (state) => {
 export const otherDevicesList = (state) => {
   const { fullList } = state.otherDevices;
 
-  return fullList.map((device) => ({
-    ...device,
-    id: `other-device-${device.id}`,
-    apiId: device.id,
+  return fullList.map(({ id, name, state }) => ({
+    apiId: id,
+    id: `other-device-${id}`,
+    name,
     type: "other-device",
     state: {
-      ...device.state,
-      switchState: device.state.switchState || device.state.switch_state,
+      ...state,
+      switchState: state.switchState || state.switch_state,
     },
   }));
 };

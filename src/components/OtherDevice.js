@@ -5,17 +5,12 @@ import { toggleDeviceSwitch } from "../actions";
 
 import ToggleButton from "../reusable/ToggleButton";
 
-export default function OtherDevice({ apiId, id, state }) {
+export default function OtherDevice({ apiId, id, name, state = {} }) {
   const dispatch = useDispatch();
 
-  if (!state?.switchState) {
-    return null;
-  }
+  const { level, switchState = "" } = state;
 
-  const { level, switchState } = state;
-
-  const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
-  const label = capitalize(switchState);
+  const label = switchState === "on" ? "Turn Off" : "Turn On";
 
   const handleButtonClick = () => {
     const payload = {
@@ -35,23 +30,28 @@ export default function OtherDevice({ apiId, id, state }) {
 
   return (
     <div className="other-device">
-      <ToggleButton
-        isToggledOn={switchState === "on"}
-        handleClick={handleButtonClick}
-        label={label}
-      />
-      {level && (
-        <div className="other-device-level">
-          <input
-            className="other-device-slider"
-            id={id}
-            max="100"
-            min="1"
-            onChange={handleSliderChange}
-            type="range"
-            value={level}
+      <strong>{name}</strong>
+      {state?.switchState && (
+        <div className="other-device-controls">
+          <ToggleButton
+            isToggledOn={switchState === "on"}
+            handleClick={handleButtonClick}
+            label={label}
           />
-          <div className="other-device-level-text">{level}</div>
+          {level && (
+            <div className="other-device-level-wrapper">
+              <input
+                className="other-device-slider"
+                id={id}
+                max="100"
+                min="1"
+                onChange={handleSliderChange}
+                type="range"
+                value={level}
+              />
+              <div className="other-device-level-text">{level}</div>
+            </div>
+          )}
         </div>
       )}
     </div>

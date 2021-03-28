@@ -1,12 +1,12 @@
 .toggle-button {
-  margin-top: 5px;
   border-radius: 10px;
+  height: 13px;
   width: 50px;
   border-width: 1px;
 
   &--on {
     background-color: green;
     color: white;
-    border: 1px solid green;
+    border: 1px solid darkgreen;
   }
 }
