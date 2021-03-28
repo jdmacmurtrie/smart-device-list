@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { bool, shape } from "prop-types";
 
+import Button from "../reusable/Button";
 import ListItem from "./ListItem";
 
 export default function Pagination({ devices }) {
@@ -32,12 +33,8 @@ export default function Pagination({ devices }) {
         <ListItem key={device.id} device={device} />
       ))}
       <div className="pagination-button-wrapper">
-        <button disabled={isFirstPage} onClick={previousPage}>
-          Previous
-        </button>
-        <button disabled={isLastPage} onClick={nextPage}>
-          Next
-        </button>
+        <Button disabled={isFirstPage} handleClick={previousPage} label="Previous" />
+        <Button disabled={isLastPage} handleClick={nextPage} label="Next" />
       </div>
     </div>
   );
