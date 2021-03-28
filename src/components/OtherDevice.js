@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { shape, string } from "prop-types";
 
 import { toggleDeviceSwitch } from "../actions";
 
@@ -57,3 +58,10 @@ export default function OtherDevice({ apiId, id, name, state = {} }) {
     </div>
   );
 }
+
+OtherDevice.propTypes = {
+  apiId: string,
+  id: string,
+  name: string,
+  state: shape({ switchState: string, level: string }),
+};

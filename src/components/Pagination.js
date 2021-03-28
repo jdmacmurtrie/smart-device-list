@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { bool, shape } from "prop-types";
+
 import ListItem from "./ListItem";
 
 export default function Pagination({ devices }) {
@@ -40,3 +42,7 @@ export default function Pagination({ devices }) {
     </div>
   );
 }
+
+Pagination.propTypes = {
+  devices: shape({ id: bool }),
+};

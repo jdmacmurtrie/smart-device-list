@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { bool, string } from "prop-types";
+
 import ToggleButton from "../reusable/ToggleButton";
 
 export default function SpecialLock({ accessible, name }) {
@@ -29,3 +31,8 @@ export default function SpecialLock({ accessible, name }) {
     </div>
   );
 }
+
+SpecialLock.propTypes = {
+  accessible: bool,
+  name: string,
+};

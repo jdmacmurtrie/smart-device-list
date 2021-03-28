@@ -1,3 +1,5 @@
+import { object } from "prop-types";
+
 import BasicLock from "./BasicLock";
 import OtherDevice from "./OtherDevice";
 import SpecialLock from "./SpecialLock";
@@ -23,3 +25,7 @@ export default function ListItem({ device }) {
 
   return <div className="list-item">{deviceComponent}</div>;
 }
+
+ListItem.propTypes = {
+  device: object,
+};

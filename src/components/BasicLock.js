@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { arrayOf, string } from "prop-types";
 
 import ToggleButton from "../reusable/ToggleButton";
 
@@ -40,3 +41,9 @@ export default function BasicLock({ capabilities, name, status }) {
     </div>
   );
 }
+
+BasicLock.propTypes = {
+  capabilities: arrayOf(string),
+  name: string,
+  status: string,
+};
