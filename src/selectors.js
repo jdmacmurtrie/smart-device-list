@@ -1,10 +1,10 @@
-export const basicLocksWithType = (state) => {
+export const basicLocksList = (state) => {
   const { fullList } = state.basicLocks;
 
   return fullList.map((lock) => ({ ...lock, id: `basic-lock-${lock.id}`, type: "basic-lock" }));
 };
 
-export const specialLocksWithType = (state) => {
+export const specialLocksList = (state) => {
   const { fullList } = state.specialLocks;
 
   return fullList.map((lock) => {
@@ -37,4 +37,19 @@ export const specialLocksWithType = (state) => {
 
     return { ...lock, type: "special-lock", accessible: lockIsAccessible };
   });
+};
+
+export const otherDevicesList = (state) => {
+  const { fullList } = state.otherDevices;
+
+  return fullList.map((device) => ({
+    ...device,
+    id: `other-device-${device.id}`,
+    apiId: device.id,
+    type: "other-device",
+    state: {
+      ...device.state,
+      switchState: device.state.switchState || device.state.switch_state,
+    },
+  }));
 };

@@ -33,6 +33,25 @@ export const otherDevicesReducer = (state = otherDevicesInitialState, action) =>
         fullList: action.fullList,
       };
 
+    case types.DEVICE_SWITCH_TOGGLE:
+      const { fullList } = state;
+
+      // get device to be updated
+      const oldDevice = fullList.find((device) => device.id === action.id);
+      const deviceIndex = fullList.indexOf(oldDevice);
+
+      // update state property/properties
+      const newDevice = { ...oldDevice, state: { ...oldDevice.state, ...action.state } };
+
+      // update list
+      const newFullList = fullList.slice();
+      newFullList.splice(deviceIndex, 1, newDevice);
+
+      return {
+        ...state,
+        fullList: newFullList,
+      };
+
     default:
       return state;
   }

@@ -1,24 +1,24 @@
 import React, { useState } from "react";
-import LockToggle from "../reusable/LockToggle";
+import ToggleButton from "../reusable/ToggleButton";
 
-export default function BasicLock({ accessible, id }) {
+export default function SpecialLock({ accessible }) {
   const [isLocked, setLocked] = useState(true);
 
   const label = isLocked ? "Locked" : "Unlocked";
 
-  const handleChange = () => {
+  const handleClick = () => {
     setLocked(!isLocked);
   };
 
   return (
-    <div className="basic-lock">
+    <>
       <div>{`Currently accessible: ${accessible ? "Yes" : "No"}`}</div>
-      <LockToggle
-        isLocked={isLocked}
+      <ToggleButton
+        isToggledOn={!isLocked}
         disabled={!accessible}
-        handleChange={handleChange}
+        handleClick={handleClick}
         label={label}
       />
-    </div>
+    </>
   );
 }

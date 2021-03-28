@@ -1,4 +1,5 @@
 import BasicLock from "../components/BasicLock";
+import OtherDevice from "../components/OtherDevice";
 import SpecialLock from "../components/SpecialLock";
 
 export default function ListItem({ device }) {
@@ -6,6 +7,10 @@ export default function ListItem({ device }) {
   switch (device.type) {
     case "basic-lock":
       deviceControls = <BasicLock {...device} />;
+      break;
+
+    case "other-device":
+      deviceControls = <OtherDevice {...device} />;
       break;
 
     case "special-lock":
@@ -19,7 +24,7 @@ export default function ListItem({ device }) {
   return (
     <div className="list-item">
       {device.name}
-      {deviceControls}
+      <div className="device-controls">{deviceControls}</div>
     </div>
   );
 }

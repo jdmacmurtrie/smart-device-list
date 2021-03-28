@@ -1,0 +1,18 @@
+.other-device {
+  display: flex;
+  flex-direction: column;
+
+  &-level {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+
+    &-text {
+      margin-left: 5px;
+    }
+  }
+
+  &-slider {
+    margin: 0;
+  }
+}
