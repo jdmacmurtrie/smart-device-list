@@ -3,7 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import { setBasicLocks, setOtherDevices, setSpecialLocks } from "../actions";
 
-import { basicLocksWithType } from "../selectors";
+import { basicLocksWithType, specialLocksWithType } from "../selectors";
 
 import Pagination from "../components/Pagination";
 import { DeviceService } from "../deviceService";
@@ -15,7 +15,7 @@ export default function DeviceList() {
 
   const basicLocks = useSelector(basicLocksWithType, shallowEqual);
   const otherDevices = useSelector((state) => state.otherDevices.fullList);
-  const specialLocks = useSelector((state) => state.specialLocks.fullList);
+  const specialLocks = useSelector(specialLocksWithType, shallowEqual);
 
   useEffect(() => {
     if (!basicLocks.length) {

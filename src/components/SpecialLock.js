@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import LockToggle from "../reusable/LockToggle";
 
-export default function BasicLock({ capabilities, id, status }) {
+export default function BasicLock({ accessible, id }) {
   const [isLocked, setLocked] = useState(true);
 
-  const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
   const label = isLocked ? "Locked" : "Unlocked";
 
   const handleChange = () => {
@@ -13,12 +12,10 @@ export default function BasicLock({ capabilities, id, status }) {
 
   return (
     <div className="basic-lock">
-      {capabilities.map((capability, index) => (
-        <div key={index}>{`${capitalize(capability)}: ${capitalize(status)}`}</div>
-      ))}
+      <div>{`Currently accessible: ${accessible ? "Yes" : "No"}`}</div>
       <LockToggle
         isLocked={isLocked}
-        disabled={status === "unavailable"}
+        disabled={!accessible}
         handleChange={handleChange}
         label={label}
       />

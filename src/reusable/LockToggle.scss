@@ -1,0 +1,12 @@
+.lock-toggle {
+  margin-top: 5px;
+  border-radius: 10px;
+  width: 50px;
+  border-width: 1px;
+
+  &--unlocked {
+    background-color: green;
+    color: white;
+    border: 1px solid green;
+  }
+}
