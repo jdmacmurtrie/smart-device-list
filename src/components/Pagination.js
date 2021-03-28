@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { bool, shape } from "prop-types";
+import { arrayOf, shape, string } from "prop-types";
 
 import Button from "../reusable/Button";
 import ListItem from "./ListItem";
@@ -11,7 +11,6 @@ export default function Pagination({ devices }) {
   const totalPages = Math.ceil(devices.length / perPage);
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === totalPages;
-
   const getDisplayedDevices = () => {
     const lastDeviceIndex = currentPage * perPage;
     const firstDeviceIndex = lastDeviceIndex - perPage;
@@ -41,5 +40,5 @@ export default function Pagination({ devices }) {
 }
 
 Pagination.propTypes = {
-  devices: shape({ id: bool }),
+  devices: arrayOf(shape({ id: string })),
 };

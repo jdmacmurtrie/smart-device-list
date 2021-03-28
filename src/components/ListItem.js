@@ -23,7 +23,11 @@ export default function ListItem({ device }) {
       break;
   }
 
-  return <div className="list-item">{deviceComponent}</div>;
+  return (
+    <div className="list-item" data-testid="list-item">
+      {deviceComponent}
+    </div>
+  );
 }
 
 ListItem.propTypes = {

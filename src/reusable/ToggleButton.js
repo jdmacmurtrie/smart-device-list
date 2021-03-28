@@ -1,7 +1,7 @@
 import classNames from "classnames";
-import { bool, func, string } from 'prop-types'
+import { bool, func, string } from "prop-types";
 
-export default function ToggleButton({ disabled, handleClick, label, isToggledOn }) {
+export default function ToggleButton({ disabled, handleClick, isToggledOn, label }) {
   const toggledOnClass = isToggledOn && "toggle-button--on";
 
   return (
@@ -19,5 +19,5 @@ ToggleButton.propTypes = {
   disabled: bool,
   handleClick: func,
   label: string,
-  isToggledOn: bool
-}
+  isToggledOn: bool,
+};
