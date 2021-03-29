@@ -1,0 +1,10 @@
+.heading {
+  display: flex;
+  // justify-content: space-between;
+
+  &-status {
+    color: #404040;
+    font-style: italic;
+    margin-left: 5px;
+  }
+}

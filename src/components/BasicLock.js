@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { arrayOf, string } from "prop-types";
 
+import Heading from "../reusable/Heading";
 import ToggleButton from "../reusable/ToggleButton";
 
 import { capitalize } from "../utils";
@@ -18,10 +19,7 @@ export default function BasicLock({ capabilities, name, status }) {
 
   return (
     <div className="basic-lock">
-      <div className="basic-lock-heading">
-        <strong>{name}</strong>
-        <div className="basic-lock-heading-status">{statusText}</div>
-      </div>
+      <Heading heading={name} status={statusText} />
       <div className="basic-lock-controls">
         <div className="basic-lock-capabilities">
           {capabilities.map((capability, index) => (

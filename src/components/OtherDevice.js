@@ -4,7 +4,10 @@ import { shape, string } from "prop-types";
 
 import { toggleDeviceSwitch } from "../actions";
 
+import Heading from "../reusable/Heading";
 import ToggleButton from "../reusable/ToggleButton";
+
+import { capitalize } from "../utils";
 
 export default function OtherDevice({ apiId, id, name, state = {} }) {
   const dispatch = useDispatch();
@@ -12,6 +15,7 @@ export default function OtherDevice({ apiId, id, name, state = {} }) {
   const { level, switchState = "" } = state;
 
   const label = switchState === "on" ? "Turn Off" : "Turn On";
+  const statusText = capitalize(switchState);
 
   const handleButtonClick = () => {
     const payload = {
@@ -31,7 +35,7 @@ export default function OtherDevice({ apiId, id, name, state = {} }) {
 
   return (
     <div className="other-device">
-      <strong>{name}</strong>
+      <Heading heading={name} status={statusText} />
       {state?.switchState && (
         <div className="other-device-controls">
           <ToggleButton
@@ -43,6 +47,7 @@ export default function OtherDevice({ apiId, id, name, state = {} }) {
             <div className="other-device-level-wrapper">
               <input
                 className="other-device-slider"
+                disabled={switchState !== "on"}
                 id={id}
                 max="100"
                 min="1"

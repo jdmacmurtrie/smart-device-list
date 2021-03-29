@@ -1,16 +1,6 @@
 .basic-lock {
   width: 100%;
 
-  &-heading {
-    display: flex;
-    justify-content: space-between;
-
-    &-status {
-      color: #404040;
-      font-style: italic;
-    }
-  }
-
   &-controls {
     margin-top: 5px;
     display: flex;
